@@ -2,7 +2,9 @@ var React = require('react')
 
 module.exports = React.createClass({
   render: function() {
-    return <div className="header">This is my location</div>
+    return <header className="header">
+        <span>This is my location</span>
+      </header>
   },
   componentWillMount: function() {
     console.log('Header is about to mount')

@@ -134,7 +134,13 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-$usualWidth: 40rem !global;
+@mixin flex-inside {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 div.react-content {
   display: flex;
   border: 10px solid green;
@@ -142,14 +148,18 @@ div.react-content {
   flex-direction: column;
 }
 .header {
-  border: 1px solid red;
-  flex: 1;
+  background: lime;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  @include flex-inside;
 }
 .map {
-  border: 1px solid green;
-  flex: 4;
+  @include flex-inside;
+  flex: 5;
 }
 .toolbar {
-  flex: 1;
-  border: 1px solid blue;
+  background: lime;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  @include flex-inside;
 }
