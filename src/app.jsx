@@ -1,10 +1,14 @@
 var React = require('React')
 var Header = require('./header')
+var Map = require('./map')
+var Toolbar = require('./toolbar')
 
 var App = React.createClass({
   render: function() {
-    return <div>
+    return <div className="react-content">
         <Header></Header>
+        <Map></Map>
+        <Toolbar></Toolbar>
       </div>
   }
 })

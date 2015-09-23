@@ -134,6 +134,22 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-header.header {
+$usualWidth: 40rem !global;
+div.react-content {
+  display: flex;
+  border: 10px solid green;
+  height: 70vh;
+  flex-direction: column;
+}
+.header {
   border: 1px solid red;
+  flex: 1;
+}
+.map {
+  border: 1px solid green;
+  flex: 4;
+}
+.toolbar {
+  flex: 1;
+  border: 1px solid blue;
 }
