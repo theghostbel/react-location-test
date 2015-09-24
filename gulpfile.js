@@ -70,8 +70,9 @@ gulp.task('deploy-build', function() {
     })
     .bundle()
     .pipe(source('main.js'))
-    .pipe(streamify(uglify('main.js')))
-    .pipe(gulp.dest('build'));
+    .pipe(debug())
+    .pipe(gulp.dest('build'))
+    .pipe(debug())
 });
 
 gulp.task('serve', function(done) {
