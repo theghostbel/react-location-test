@@ -19,6 +19,7 @@ div.react-content {
 }
 .map {
   @include flex-inside;
+  justify-content: space-between;
   flex: 5;
 }
 .toolbar {
@@ -27,8 +28,14 @@ div.react-content {
   padding: 1rem;
   @include flex-inside;
 }
-
 span.coord-unit {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+span.invis {
+  display: none;
+}
+
+span.timestamp{
+  padding: 1.2rem;
 }

@@ -10,13 +10,18 @@ var App = React.createClass({
     }
   },
   handleCoordsUpdate: function(err, pos) {
+
+    if (err) {
+      return console.error('ERROR(' + err.code + '): ' + err.message)
+    }
+
     this.setState({
       pos: pos
     })
   },
   render: function() {
     return <div className="react-content">
-        <Header></Header>
+        <Header updateTime={this.state.pos.timestamp}></Header>
         <Map position={this.state.pos}></Map>
         <Toolbar coordsCallback={this.handleCoordsUpdate}></Toolbar>
       </div>
