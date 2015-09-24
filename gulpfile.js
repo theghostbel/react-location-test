@@ -57,8 +57,7 @@ function deployBundle() {
       entries: ['./src/app.jsx'],
       transform: [reactify],
       extensions: ['.jsx'],
-      fullPaths: true,
-      standalone: 'Main'
+      fullPaths: true
     })
     .bundle()
     .on('error', notify)
