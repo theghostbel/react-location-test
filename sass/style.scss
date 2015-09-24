@@ -19,8 +19,17 @@ div.react-content {
 }
 .map {
   @include flex-inside;
-  justify-content: space-between;
+  padding: 0;
+  justify-content: center;
+  flex-direction: column-reverse;
   flex: 5;
+}
+.map div.coords-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 90%;
 }
 .toolbar {
   background: lime;
@@ -35,7 +44,6 @@ span.coord-unit {
 span.invis {
   display: none;
 }
-
-span.timestamp{
+span.timestamp {
   padding: 1.2rem;
 }
