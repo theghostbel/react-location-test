@@ -4,11 +4,21 @@ var Map = require('./map')
 var Toolbar = require('./toolbar')
 
 var App = React.createClass({
+  getInitialState: function() {
+    return {
+      pos: {}
+    }
+  },
+  handleCoordsUpdate: function(err, pos) {
+    this.setState({
+      pos: pos
+    })
+  },
   render: function() {
     return <div className="react-content">
         <Header></Header>
-        <Map></Map>
-        <Toolbar></Toolbar>
+        <Map position={this.state.pos}></Map>
+        <Toolbar coordsCallback={this.handleCoordsUpdate}></Toolbar>
       </div>
   }
 })
