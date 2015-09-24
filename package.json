@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "browserify": "^11.1.0",
+    "geolib": "^2.0.18",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-sass": "^2.0.4",
