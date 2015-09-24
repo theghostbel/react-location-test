@@ -49,7 +49,7 @@ function bundle() {
     .bundle()
     .on('error', notify)
     .pipe(source('main.js'))
-    .pipe(gulp.dest('./'))
+    .pipe(gulp.dest('./build/'))
 }
 
 function deployBundle() {
@@ -63,7 +63,7 @@ function deployBundle() {
     .bundle()
     .on('error', notify)
     .pipe(source('main.js'))
-    .pipe(gulp.dest('./'))
+    .pipe(gulp.dest('./build/'))
 }
 
 bundler.on('update', bundle)
