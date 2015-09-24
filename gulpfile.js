@@ -9,6 +9,10 @@ var server = require('gulp-server-livereload');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var watch = require('gulp-watch');
+var debug = require('gulp-debug')
+var uglify = require('gulp-uglify')
+var buffer = require('vinyl-buffer')
+var streamify = require('gulp-streamify')
 
 var notify = function(error) {
   var message = 'In: ';
@@ -52,19 +56,6 @@ function bundle() {
     .pipe(gulp.dest('./build/'))
 }
 
-function deployBundle() {
-  return browserify({
-      entries: ['./src/app.jsx'],
-      transform: [reactify],
-      extensions: ['.jsx'],
-      fullPaths: true
-    })
-    .bundle()
-    .on('error', notify)
-    .pipe(source('main.js'))
-    .pipe(gulp.dest('./build/'))
-}
-
 bundler.on('update', bundle)
 
 gulp.task('build', function() {
@@ -72,7 +63,15 @@ gulp.task('build', function() {
 });
 
 gulp.task('deploy-build', function() {
-  deployBundle()
+  browserify({
+      entries: ['./src/app.jsx'],
+      transform: [reactify],
+      extensions: ['.jsx']
+    })
+    .bundle()
+    .pipe(source('main.js'))
+    .pipe(streamify(uglify('main.js')))
+    .pipe(gulp.dest('build'));
 });
 
 gulp.task('serve', function(done) {

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "gulp",
+    "postinstall": "gulp deploy-build",
     "start": "http-server -d"
   },
   "author": "Rostu",
@@ -15,8 +15,11 @@
     "geolib": "^2.0.18",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
+    "gulp-debug": "^2.1.0",
     "gulp-sass": "^2.0.4",
     "gulp-server-livereload": "^1.5.3",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^1.4.1",
     "gulp-util": "^3.0.6",
     "gulp-watch": "^4.3.5",
     "http-server": "^0.8.4",
@@ -25,6 +28,7 @@
     "react": "^0.13.3",
     "reactify": "^1.1.1",
     "underscore": "^1.8.3",
+    "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.4.0"
   },
