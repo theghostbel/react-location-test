@@ -23,9 +23,9 @@ var App = React.createClass({
   render: function() {
     return <div className="react-content">
         <Header updateTime={this.state.pos.timestamp}></Header>
+        <RangeFinder myPosition={this.state.pos}></RangeFinder>
         <Map position={this.state.pos}></Map>
         <Toolbar coordsCallback={this.handleCoordsUpdate}></Toolbar>
-        <RangeFinder myPosition={this.state.pos}></RangeFinder>
       </div>
   }
 })

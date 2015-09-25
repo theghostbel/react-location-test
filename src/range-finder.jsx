@@ -52,12 +52,12 @@ module.exports = React.createClass({
     var self = this,
       state = self.state
 
-    return <footer className="range-finder">
+    return <div className="range-finder">
         <span className="label label-primary timestamp">{state.distance}
           Meters</span>
         <input className="coords" onChange={this.handleChange('destinationLatitude')} placeholder="End latitude" ref="latitude" type="text" value={state.destinationLatitude}/>
         <input className="coords" onChange={this.handleChange('destinationLongitude')} placeholder="End longitude" ref="longitude" type="text" value={state.destinationLongitude}/>
         <button className="btn btn-default btn-calc" onClick={self.handleCalcClick} type="button" type="button">Calc</button>
-      </footer>
+      </div>
   }
 })
