@@ -72,7 +72,7 @@ gulp.task('just-build', function() {
     })
     .bundle()
     .pipe(source('bundle.js'))
-    .pipe(streamify(uglify('bundle.js')))
+    // .pipe(streamify(uglify('bundle.js')))
     .pipe(debug())
     .pipe(gulp.dest('./'))
 });
