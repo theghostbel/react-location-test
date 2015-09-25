@@ -13,6 +13,7 @@ var debug = require('gulp-debug')
 var uglify = require('gulp-uglify')
 var buffer = require('vinyl-buffer')
 var streamify = require('gulp-streamify')
+var minifyCSS = require('gulp-minify-css')
 
 var notify = function(error) {
   var message = 'In: ';
@@ -62,15 +63,18 @@ gulp.task('build', function() {
   bundle()
 });
 
-gulp.task('deploy-build', function() {
+gulp.task('just-build', function() {
   browserify({
       entries: ['./src/app.jsx'],
       transform: [reactify],
-      extensions: ['.jsx']
+      extensions: ['.jsx'],
+      fullPaths: true
     })
     .bundle()
-    .pipe(source('main.js'))
-    .pipe(gulp.dest('build'))
+    .pipe(source('bundle.js'))
+    .pipe(streamify(uglify('bundle.js')))
+    .pipe(debug())
+    .pipe(gulp.dest('./'))
 });
 
 gulp.task('serve', function(done) {
@@ -97,9 +101,16 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('./'));
 });
 
+gulp.task('style-min', function() {
+  gulp.src('./style.css')
+    .pipe(debug())
+    .pipe(minifyCSS())
+    .pipe(gulp.dest('./'));
+});
+
 gulp.task('default', ['build', 'serve', 'sass', 'watch']);
 
-gulp.task('deploy', ['deploy-build', 'sass']);
+gulp.task('deploy', ['just-build', 'sass', 'style-min']);
 
 gulp.task('watch', function() {
   gulp.watch('./sass/**/*.scss', ['sass']);
