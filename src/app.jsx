@@ -1,4 +1,4 @@
-var React = require('React')
+var React = require('react')
 var Header = require('./header')
 var Map = require('./map')
 var Toolbar = require('./toolbar')
