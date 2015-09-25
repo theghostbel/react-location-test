@@ -2,6 +2,7 @@ var React = require('react')
 var Header = require('./header')
 var Map = require('./map')
 var Toolbar = require('./toolbar')
+var RangeFinder = require('./range-finder')
 
 var App = React.createClass({
   getInitialState: function() {
@@ -24,6 +25,7 @@ var App = React.createClass({
         <Header updateTime={this.state.pos.timestamp}></Header>
         <Map position={this.state.pos}></Map>
         <Toolbar coordsCallback={this.handleCoordsUpdate}></Toolbar>
+        <RangeFinder myPosition={this.state.pos}></RangeFinder>
       </div>
   }
 })
