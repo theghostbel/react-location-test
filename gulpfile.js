@@ -58,8 +58,8 @@ function bundle() {
   return bundler
     .bundle()
     .on('error', notify)
-    .pipe(source('main.js'))
-    .pipe(gulp.dest('./build/'))
+    .pipe(source('bundle.js'))
+    .pipe(gulp.dest(BUILD_FOLDER))
 }
 
 bundler.on('update', bundle)
@@ -74,7 +74,7 @@ gulp.task('serve', function(done) {
       livereload: {
         enable: true,
         filter: function(filePath, cb) {
-          if (/main.js/.test(filePath)) {
+          if (/bundle.js/.test(filePath)) {
             cb(true)
           } else if (/style.css/.test(filePath)) {
             cb(true)

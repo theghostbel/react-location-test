@@ -12,6 +12,7 @@ module.exports = React.createClass({
     var lastUpdateTime = moment(this.props.updateTime).format('MMMM Do YYYY, HH:mm:ss')
 
     return <header className="header">
+        <span className="label label-success">Last Read</span>
         <span className="label label-primary timestamp">{lastUpdateTime}</span>
       </header>
   }
