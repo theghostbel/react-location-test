@@ -17,11 +17,10 @@ var geo = {
   getCoords: function(callback, errorCallback) {
     navigator.geolocation.getCurrentPosition(success, error, options)
   },
-  /**{latitude: 51.5103, longitude: 7.49347}*/
-  getDistance(fromCoords, toCoords, success, error) {
+  getDistance: function(fromCoords, toCoords, success, error) {
     var distanceInMteres = geolib.getDistance(fromCoords, toCoords)
 
-    success(distanceInMteres)
+    return success(distanceInMteres)
   }
 }
 
