@@ -18,6 +18,14 @@ module.exports = React.createClass({
         })
       })
   },
+  handleChange: function(stateFld) {
+    var self = this
+    return function(event) {
+      var stateObj = {}
+      stateObj[stateFld] = event.target.value
+      self.setState(stateObj)
+    }
+  },
   handleCalcClick: function() {
 
     var fromLatlng = {
@@ -45,11 +53,11 @@ module.exports = React.createClass({
       state = self.state
 
     return <footer className="range-finder">
-        <span>{state.distance}
+        <span className="label label-primary timestamp">{state.distance}
           Meters</span>
-        <input className="coords" placeholder="End latitude" ref="latitude" type="text" value={state.destinationLatitude}/>
-        <input className="coords" placeholder="End longitude" ref="longitude" type="text" value={state.destinationLongitude}/>
-        <button onClick={self.handleCalcClick} type="button">Calc</button>
+        <input className="coords" onChange={this.handleChange('destinationLatitude')} placeholder="End latitude" ref="latitude" type="text" value={state.destinationLatitude}/>
+        <input className="coords" onChange={this.handleChange('destinationLongitude')} placeholder="End longitude" ref="longitude" type="text" value={state.destinationLongitude}/>
+        <button className="btn btn-default btn-calc" onClick={self.handleCalcClick} type="button" type="button">Calc</button>
       </footer>
   }
 })
