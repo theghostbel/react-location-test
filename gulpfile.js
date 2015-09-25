@@ -1,19 +1,24 @@
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var source = require('vinyl-source-stream');
-var browserify = require('browserify');
-var watchify = require('watchify');
-var reactify = require('reactify');
-var notifier = require('node-notifier');
-var server = require('gulp-server-livereload');
-var concat = require('gulp-concat');
-var sass = require('gulp-sass');
-var watch = require('gulp-watch');
+var gulp = require('gulp')
+var gutil = require('gulp-util')
+var source = require('vinyl-source-stream')
+var browserify = require('browserify')
+var watchify = require('watchify')
+var reactify = require('reactify')
+var notifier = require('node-notifier')
+var server = require('gulp-server-livereload')
+var concat = require('gulp-concat')
+var sass = require('gulp-sass')
+var watch = require('gulp-watch')
 var debug = require('gulp-debug')
 var uglify = require('gulp-uglify')
 var buffer = require('vinyl-buffer')
 var streamify = require('gulp-streamify')
 var minifyCSS = require('gulp-minify-css')
+var rename = require('gulp-rename')
+var path = require('path')
+
+var BUILD_FOLDER = path.join(__dirname, 'ready')
+var TEMP_FOLDER = path.join(__dirname, 'temp')
 
 var notify = function(error) {
   var message = 'In: ';
@@ -63,20 +68,6 @@ gulp.task('build', function() {
   bundle()
 });
 
-gulp.task('just-build', function() {
-  browserify({
-      entries: ['./src/app.jsx'],
-      transform: [reactify],
-      extensions: ['.jsx'],
-      fullPaths: true
-    })
-    .bundle()
-    .pipe(source('bundle.js'))
-    // .pipe(streamify(uglify('bundle.js')))
-    .pipe(debug())
-    .pipe(gulp.dest('./'))
-});
-
 gulp.task('serve', function(done) {
   gulp.src('')
     .pipe(server({
@@ -98,19 +89,35 @@ gulp.task('sass', function() {
   gulp.src('./sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('style.css'))
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest(TEMP_FOLDER));
 });
 
 gulp.task('style-min', function() {
-  gulp.src('./style.css')
+  gulp.src(path.join(TEMP_FOLDER, 'style.css'))
     .pipe(debug())
     .pipe(minifyCSS())
-    .pipe(gulp.dest('./'));
-});
+    .pipe(gulp.dest(BUILD_FOLDER));
+})
+
+gulp.task('bfy', function() {
+  var bundleStream = browserify({
+    entries: ['./src/app.jsx'],
+    transform: [reactify],
+    extensions: ['.jsx'],
+    fullPaths: true
+  }).bundle()
+
+  bundleStream
+    .pipe(source('index.js'))
+    .pipe(streamify(uglify()))
+    .pipe(rename('bundle.js'))
+    .pipe(gulp.dest(BUILD_FOLDER))
+})
+
 
 gulp.task('default', ['build', 'serve', 'sass', 'watch']);
 
-gulp.task('deploy', ['just-build', 'sass', 'style-min']);
+gulp.task('deploy', ['bfy', 'sass', 'style-min']);
 
 gulp.task('watch', function() {
   gulp.watch('./sass/**/*.scss', ['sass']);
