@@ -89,11 +89,12 @@ gulp.task('sass', function() {
   gulp.src('./sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('style.css'))
-    .pipe(gulp.dest(TEMP_FOLDER));
+    .pipe(debug())
+    .pipe(gulp.dest(BUILD_FOLDER));
 });
 
 gulp.task('style-min', function() {
-  gulp.src(path.join(TEMP_FOLDER, 'style.css'))
+  gulp.src(path.join(BUILD_FOLDER, 'style.css'))
     .pipe(debug())
     .pipe(minifyCSS())
     .pipe(gulp.dest(BUILD_FOLDER));
@@ -117,7 +118,7 @@ gulp.task('bfy', function() {
 
 gulp.task('default', ['build', 'serve', 'sass', 'watch']);
 
-gulp.task('deploy', ['bfy', 'sass', 'style-min']);
+gulp.task('deploy', ['bfy', 'sass']);
 
 gulp.task('watch', function() {
   gulp.watch('./sass/**/*.scss', ['sass']);
