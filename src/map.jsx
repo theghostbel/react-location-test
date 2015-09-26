@@ -1,15 +1,22 @@
 var React = require('react')
-var Map = require('react-maps')
 
 module.exports = React.createClass({
   render: function() {
 
     var lat = this.props.position.coords && this.props.position.coords.latitude,
-      long = this.props.position.coords && this.props.position.coords.longitude
-      // imgSrc = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + long + "&zoom=13&size=300x300&sensor=true"
+      long = this.props.position.coords && this.props.position.coords.longitude,
+      imgSrc = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + long + "&zoom=15&size=400x400&sensor=true"
 
     return (
-      <Map latitude={lat} longitude={long} zoom={10}/>
+      <div className="map">
+        <div className="coords-row">
+          <span className="label label-info coord-unit">{lat}°</span>
+          <span className="label label-info coord-unit">{long}°</span>
+        </div>
+        <div className="map-picture">
+          <img src={imgSrc}/>
+        </div>
+      </div>
     )
   }
 })
