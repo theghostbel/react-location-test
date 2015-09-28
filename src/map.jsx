@@ -4,7 +4,7 @@ var ReactScriptLoaderModule = require('react-script-loader');
 var ReactScriptLoaderMixin = ReactScriptLoaderModule.ReactScriptLoaderMixin;
 var ReactScriptLoader = ReactScriptLoaderModule.ReactScriptLoader;
 
-var scriptURL = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyB-lE0R1V0ti3AjwQvdeK2EPu8p2P5Uu4A&sensor=true&callback=initializeMaps';
+var scriptURL = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB-lE0R1V0ti3AjwQvdeK2EPu8p2P5Uu4A&sensor=true&callback=initializeMaps';
 
 // This function is called by the Google maps API after its initialization is
 // complete.
@@ -38,18 +38,21 @@ module.exports = React.createClass({
       long = this.props.position.coords && this.props.position.coords.longitude
 
     var center = new google.maps
-      .LatLng(lat, long);
+      .LatLng(lat, long)
     var mapOptions = {
       zoom: 15,
       center: center,
       disableDefaultUI: true,
-      draggable: false,
+      draggable: true,
       zoomControl: false,
       scrollwheel: false,
       disableDoubleClickZoom: true
-    };
+    }
+
     var map = new google.maps
-      .Map(this.getDOMNode(), mapOptions);
+      .Map(this.getDOMNode(), mapOptions)
+
+    this.map = map
   },
   onScriptError: function() {
     // Show the user an error message.
@@ -60,6 +63,9 @@ module.exports = React.createClass({
     var lat = this.props.position.coords && this.props.position.coords.latitude,
       long = this.props.position.coords && this.props.position.coords.longitude,
       imgSrc = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + long + "&zoom=15&size=400x400&sensor=true"
+
+    this.map && this.map
+      .setCenter(new google.maps.LatLng(lat, long))
 
     return (
       <div className="map mapCanvas"></div>

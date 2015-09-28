@@ -22,10 +22,6 @@ div.react-content {
   justify-content: space-between;
 }
 .map {
-  @include flex-inside;
-  padding: 0;
-  justify-content: center;
-  flex-direction: column-reverse;
   flex: 3;
 }
 .map div.coords-row {
@@ -55,9 +51,6 @@ span.invis {
 }
 span.timestamp {
   padding: 1.2rem;
-}
-.map-picture img {
-  width: 80vw;
 }
 input.coords {
   min-width: 4rem;
