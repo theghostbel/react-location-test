@@ -40,7 +40,7 @@ module.exports = React.createClass({
     var center = new google.maps
       .LatLng(lat, long)
     var mapOptions = {
-      zoom: 15,
+      zoom: 14,
       center: center,
       disableDefaultUI: true,
       draggable: true,
