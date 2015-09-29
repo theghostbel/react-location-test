@@ -21,6 +21,13 @@ var geo = {
     var distanceInMteres = geolib.getDistance(fromCoords, toCoords)
 
     return success(distanceInMteres)
+  },
+  getIsPointInside: function(latlng, coords, success) {
+    var isPointInside = geolib.isPointInside(latlng, coords)
+
+    console.log(latlng)
+    console.log(coords)
+    return success(isPointInside)
   }
 }
 
