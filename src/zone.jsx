@@ -26,6 +26,8 @@ module.exports = React.createClass({
   },
   update: function() {
 
+    var self = this
+
     if (!this.props.position.coords)
       return
 
@@ -49,7 +51,10 @@ module.exports = React.createClass({
 
     geo
       .getIsPointInside(latlng, coords, function(result) {
-        console.log(result)
+        alert(result)
+        self.setState({
+          inside: result
+        })
       })
 
   },
