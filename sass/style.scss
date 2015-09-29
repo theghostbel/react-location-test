@@ -35,12 +35,14 @@ div.react-content {
   padding: 1rem;
   @include flex-inside;
   justify-content: space-between;
+  flex: 4;
 }
 .toolbar {
   @include ugly-color;
   color: rgba(0, 0, 0, 0.5);
   padding: 1rem;
   @include flex-inside;
+  flex-direction: column;
 }
 .range-finder {
   display: flex;
