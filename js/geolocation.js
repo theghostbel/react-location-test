@@ -25,8 +25,20 @@ var geo = {
   getIsPointInside: function(latlng, coords, success) {
     var isPointInside = geolib.isPointInside(latlng, coords)
 
-    console.log(latlng)
-    console.log(coords)
+    // [{
+    //   latitude: 59.453063,
+    //   longitude: 24.671333
+    // }, {
+    //   latitude: 59.456203,
+    //   longitude: 24.717939
+    // }, {
+    //   latitude: 59.424248,
+    //   longitude: 24.736433
+    // }, {
+    //   latitude: 59.424910,
+    //   longitude: 24.664970
+    // }]
+
     return success(isPointInside)
   }
 }

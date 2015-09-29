@@ -37,8 +37,8 @@ module.exports = React.createClass({
     return (
       <footer className="toolbar">
         <button className="btn btn-default btn-lg" onClick={self.handleButtonClick} type="button">Read my location</button>
-        <span className="invis label label-info coord-unit">LAT:{state.latitude}</span>
-        <span className="invis label label-info coord-unit">LONG:{state.longitude}</span>
+        <span className="label label-info coord-unit">LAT:{state.latitude}</span>
+        <span className="label label-info coord-unit">LONG:{state.longitude}</span>
       </footer>
     )
   }

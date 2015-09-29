@@ -23,6 +23,13 @@ module.exports = React.createClass({
     this.bindAsObject(fb, 'points')
     this.fb = fb
 
+    // this.firebaseRefs
+    //   .points
+    //   .push({
+    //     lat: 59.424910,
+    //     lng: 24.664970
+    //   })
+
   },
   update: function() {
 
@@ -51,7 +58,6 @@ module.exports = React.createClass({
 
     geo
       .getIsPointInside(latlng, coords, function(result) {
-        alert(result)
         self.setState({
           inside: result
         })
