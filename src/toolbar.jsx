@@ -5,7 +5,8 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       latitude: null,
-      longitude: null
+      longitude: null,
+      reading: false
     }
   },
   componentDidMount: function() {
@@ -17,12 +18,18 @@ module.exports = React.createClass({
   updateCoords: function() {
     var self = this,
       state = self.state
+
+    self.setState({
+      reading: true
+    })
+
     if (geo.canBeUsed()) {
       geo
-        .getFastCoords(function(pos) {
+        .getCoords(function(pos) {
           self.setState({
             latitude: pos.coords.latitude,
-            longitude: pos.coords.longitude
+            longitude: pos.coords.longitude,
+            reading: false
           })
           self.props
             .coordsCallback(null, pos)
@@ -36,6 +43,9 @@ module.exports = React.createClass({
 
     return (
       <footer className="toolbar">
+        <span className={state.reading
+          ? ""
+          : "invis"}>Reading</span>
         <button className="btn btn-default btn-lg" onClick={self.handleButtonClick} type="button">Read my location</button>
         <span className="label label-info coord-unit">LAT:{state.latitude}</span>
         <span className="label label-info coord-unit">LONG:{state.longitude}</span>
