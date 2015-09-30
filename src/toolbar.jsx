@@ -34,7 +34,12 @@ module.exports = React.createClass({
           self.props
             .coordsCallback(null, pos)
         }, function(err) {
-          alert(err)
+          self.setState({
+            reading: false
+          })
+          alert([
+            'ERROR:', err.message || err.code
+          ].join(' '))
         })
     }
   },
