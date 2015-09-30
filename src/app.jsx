@@ -1,6 +1,6 @@
 var React = require('react')
 var Header = require('./header')
-var Map = require('./map')
+// var Map = require('./map')
 var Toolbar = require('./toolbar')
 var RangeFinder = require('./range-finder')
 var Zone = require('./zone')
