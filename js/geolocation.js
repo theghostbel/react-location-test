@@ -14,7 +14,7 @@ var geo = {
   getFastCoords: function(success, error) {
     navigator.geolocation.getCurrentPosition(success, error)
   },
-  getCoords: function(callback, errorCallback) {
+  getCoords: function(success, error) {
     navigator.geolocation.getCurrentPosition(success, error, options)
   },
   getDistance: function(fromCoords, toCoords, success, error) {
