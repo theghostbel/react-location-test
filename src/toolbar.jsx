@@ -25,7 +25,7 @@ module.exports = React.createClass({
 
     if (geo.canBeUsed()) {
       geo
-        .getCoords(function(pos) {
+        .getFastCoords(function(pos) {
           self.setState({
             latitude: pos.coords.latitude,
             longitude: pos.coords.longitude,
