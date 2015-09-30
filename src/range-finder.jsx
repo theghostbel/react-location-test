@@ -57,7 +57,7 @@ module.exports = React.createClass({
           Meters</span>
         <input className="coords" onChange={this.handleChange('destinationLatitude')} placeholder="End latitude" ref="latitude" type="text" value={state.destinationLatitude}/>
         <input className="coords" onChange={this.handleChange('destinationLongitude')} placeholder="End longitude" ref="longitude" type="text" value={state.destinationLongitude}/>
-        <button className="btn btn-default btn-calc" onClick={self.handleCalcClick} type="button" type="button">Calc</button>
+        <button className="btn btn-default btn-calc" onClick={self.handleCalcClick} type="button" type="button">Distance</button>
       </div>
   }
 })
