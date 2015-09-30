@@ -85,7 +85,7 @@ module.exports = React.createClass({
       })
       .value()
 
-    return <ul>
+    return <ul className="zone-list">
         {list}
       </ul>
   },
