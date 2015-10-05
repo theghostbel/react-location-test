@@ -1,11 +1,12 @@
 var React = require('react')
 var geo = require('../js/geolocation')
+var rounder = require('../js/coord-round')
 
 module.exports = React.createClass({
   getInitialState: function() {
     return {
       distance: 0,
-      destinationLatitude: '59.4382162',
+      destinationLatitude: '59.438216',
       destinationLongitude: '24.700667'
     }
   },
@@ -22,7 +23,8 @@ module.exports = React.createClass({
     var self = this
     return function(event) {
       var stateObj = {}
-      stateObj[stateFld] = parseFloat(event.target.value)
+
+      stateObj[stateFld] = rounder.toSix(event.target.value)
       self.setState(stateObj)
     }
   },

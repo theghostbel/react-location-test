@@ -42,7 +42,8 @@ module.exports = React.createClass({
     var self = this
     return function(event) {
       var stateObj = self.state.points
-      stateObj[key][type] = parseFloat(event.target.value)
+
+      stateObj[key][type] = rounder.toSix(event.target.value)
 
       self.setState(stateObj)
     }

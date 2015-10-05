@@ -1,5 +1,6 @@
 var React = require('react')
 var geo = require('../js/geolocation')
+var rounder = require('../js/coord-round')
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -76,8 +77,8 @@ module.exports = React.createClass({
           : "invis"}>Reading</span>
         <button className="btn btn-default" onClick={self.handleButtonClick} type="button">Read my location</button>
         <button className="btn btn-default" onClick={self.handleSecondaryBtnClick} type="button">Long read</button>
-        <span className="label label-info coord-unit">LAT:{state.latitude}</span>
-        <span className="label label-info coord-unit">LONG:{state.longitude}</span>
+        <span className="label label-info coord-unit">LAT:{rounder.toSix(state.latitude)}</span>
+        <span className="label label-info coord-unit">LONG:{rounder.toSix(state.longitude)}</span>
       </footer>
     )
   }
