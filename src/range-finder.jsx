@@ -22,7 +22,7 @@ module.exports = React.createClass({
     var self = this
     return function(event) {
       var stateObj = {}
-      stateObj[stateFld] = event.target.value
+      stateObj[stateFld] = parseFloat(event.target.value)
       self.setState(stateObj)
     }
   },

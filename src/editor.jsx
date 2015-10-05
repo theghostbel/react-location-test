@@ -42,7 +42,7 @@ module.exports = React.createClass({
     var self = this
     return function(event) {
       var stateObj = self.state.points
-      stateObj[key][type] = event.target.value
+      stateObj[key][type] = parseFloat(event.target.value)
 
       self.setState(stateObj)
     }
@@ -58,6 +58,11 @@ module.exports = React.createClass({
         })
         .value()
 
+    var memory = _.chain(range)
+      .omit(['.key'])
+      .value()
+    console.log(JSON.stringify(memory))
+
     return content
   },
   renderLatLngInput: function(key) {
@@ -72,7 +77,9 @@ module.exports = React.createClass({
     var self = this,
       state = self.state
     return <div>
-        <header><Link to={'/'}>Back</Link></header>
+        <header>
+          <Link to={'/'}>Back</Link>
+        </header>
         <h3>Edit coords</h3>
         {this.renderAllInputs()}
         <button onClick={this.handleSaveClick}>Save</button>
