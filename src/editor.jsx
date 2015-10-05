@@ -58,17 +58,12 @@ module.exports = React.createClass({
         })
         .value()
 
-    var memory = _.chain(range)
-      .omit(['.key'])
-      .value()
-    console.log(JSON.stringify(memory))
-
     return content
   },
   renderLatLngInput: function(key) {
     var state = this.state,
       self = this
-    return <div>
+    return <div className="coord-input-row">
         <input className="coords" onChange={self.handleInputChange(key, 'lat')} placeholder="End latitude" ref="latitude" type="text" value={state.points[key].lat}/>
         <input className="coords" onChange={self.handleInputChange(key, 'lng')} placeholder="End longitude" ref="longitude" type="text" value={state.points[key].lng}/>
       </div>
