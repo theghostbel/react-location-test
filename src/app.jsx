@@ -1,6 +1,6 @@
 var React = require('react')
 var Header = require('./header')
-var Map = require('./map')
+var Editor = require('./editor')
 var Toolbar = require('./toolbar')
 var RangeFinder = require('./range-finder')
 var Zone = require('./zone')
@@ -9,12 +9,6 @@ var ReactRouter = require('react-router')
 var Router = ReactRouter.Router
 var Route = ReactRouter.Route
 var Link = ReactRouter.Link
-
-var Mapper = React.createClass({
-  render: function() {
-    return <h1>This is Mapper full screen</h1>
-  }
-})
 
 var App = React.createClass({
   getInitialState: function() {
@@ -52,5 +46,5 @@ var App = React.createClass({
 
 React.render((<Router>
     <Route component={App} path="/"></Route>
-    <Route component={Mapper} path="map"/>
+    <Route component={Editor} path="crm"/>
   </Router>), document.querySelector('.container'))
