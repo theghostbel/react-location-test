@@ -7,3 +7,11 @@ exports.toSix = function(number) {
 
   return number.toFixed(6)
 }
+
+exports.getFloat = function(float) {
+  return +(float.toFixed(6))
+}
+
+exports.thrower = function() {
+  throw new Error('Not a good Idea!')
+}
