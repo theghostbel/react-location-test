@@ -2,6 +2,8 @@ var React = require('react')
 var _ = require('underscore')
 var ReactFire = require('reactfire')
 var Firebase = require('firebase')
+var rounder = require('../js/coord-round')
+
 var rootUrl = 'https://coords4.firebaseio.com/'
 
 var ReactRouter = require('react-router')
@@ -35,8 +37,24 @@ module.exports = React.createClass({
       laoding: true
     })
 
-    this.fb
-      .update(_.omit(this.state.points, ['.key']))
+    var update = _.chain(this.state.points)
+      .omit(['.key'])
+      .map(function(val, key) {
+        var data = {
+            lat: parseFloat(val.lat),
+            lng: parseFloat(val.lng)
+          },
+          result = {}
+
+        result[key] = data
+
+        return result
+
+      })
+      .value()
+
+    // this.fb
+    //   .update(update)
   },
   handleInputChange: function(key, type) {
     var self = this
