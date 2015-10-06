@@ -21,6 +21,13 @@
     "curly": 0,
     "no-console": 1,
     "no-unused-vars": 1,
-    "jsx-quotes": [1, "prefer-double"]
+    "jsx-quotes": [1, "prefer-double"],
+    "no-alert": 2,
+    "no-eval": 2,
+    "no-proto": 2,
+    "no-param-reassign": [2, {
+      "props": false
+    }],
+    "yoda": 2
   },
 }
