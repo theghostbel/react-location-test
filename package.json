@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "browserify": "^11.1.0",
+    "eslint": "^1.6.0",
     "firebase": "^2.3.0",
     "geolib": "^2.0.18",
     "gulp": "^3.9.0",
