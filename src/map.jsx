@@ -1,3 +1,5 @@
+/*global google:false*/
+
 var React = require('react')
 
 var ReactScriptLoaderModule = require('react-script-loader')
