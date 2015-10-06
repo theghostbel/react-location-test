@@ -94,7 +94,7 @@ module.exports = React.createClass({
     return <div className="zone">
         {this.allCoords()}
         <div className="result">inside?
-          {" " + state.inside}</div>
+          {' ' + state.inside}</div>
       </div>
 
   }

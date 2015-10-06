@@ -98,8 +98,8 @@ module.exports = React.createClass({
         {this.renderAllInputs()}
         <button onClick={this.handleSaveClick}>Save</button>
         <span className={state.loading
-          ? ""
-          : "invis"}>Loading</span>
+          ? ''
+          : 'invis'}>Loading</span>
       </div>
   }
 })

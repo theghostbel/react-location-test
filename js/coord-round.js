@@ -1,5 +1,3 @@
-var s = require('underscore.string')
-
 exports.toSix = function(number) {
 
   if (!number) return

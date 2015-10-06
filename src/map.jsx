@@ -1,10 +1,10 @@
 var React = require('react')
 
-var ReactScriptLoaderModule = require('react-script-loader');
-var ReactScriptLoaderMixin = ReactScriptLoaderModule.ReactScriptLoaderMixin;
-var ReactScriptLoader = ReactScriptLoaderModule.ReactScriptLoader;
+var ReactScriptLoaderModule = require('react-script-loader')
+var ReactScriptLoaderMixin = ReactScriptLoaderModule.ReactScriptLoaderMixin
+var ReactScriptLoader = ReactScriptLoaderModule.ReactScriptLoader
 
-var scriptURL = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB-lE0R1V0ti3AjwQvdeK2EPu8p2P5Uu4A&sensor=true&callback=initializeMaps';
+var scriptURL = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB-lE0R1V0ti3AjwQvdeK2EPu8p2P5Uu4A&sensor=true&callback=initializeMaps'
 
 // This function is called by the Google maps API after its initialization is
 // complete.
@@ -13,7 +13,7 @@ var scriptURL = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB-lE0R1V0ti3A
 window.initializeMaps = function() {
 
   // This triggers the onScriptLoaded method call on all mounted Map components.
-  ReactScriptLoader.triggerOnScriptLoaded(scriptURL);
+  ReactScriptLoader.triggerOnScriptLoaded(scriptURL)
 }
 
 module.exports = React.createClass({
@@ -23,11 +23,11 @@ module.exports = React.createClass({
   // ReactScriptLoader.triggerOnScriptLoaded() call above is made in
   // initializeMaps().
   deferOnScriptLoaded: function() {
-    return true;
+    return true
   },
 
   getScriptURL: function() {
-    return scriptURL;
+    return scriptURL
   },
 
   onScriptLoaded: function() {
@@ -62,7 +62,7 @@ module.exports = React.createClass({
 
     var lat = this.props.position.coords && this.props.position.coords.latitude,
       long = this.props.position.coords && this.props.position.coords.longitude,
-      imgSrc = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + long + "&zoom=15&size=400x400&sensor=true"
+      imgSrc = 'https://maps.googleapis.com/maps/api/staticmap?center=' + lat + ',' + long + '&zoom=15&size=400x400&sensor=true'
 
     this.map && this.map
       .setCenter(new google.maps.LatLng(lat, long))

@@ -73,8 +73,8 @@ module.exports = React.createClass({
     return (
       <footer className="toolbar">
         <span className={state.reading
-          ? ""
-          : "invis"}>Reading</span>
+          ? ''
+          : 'invis'}>Reading</span>
         <button className="btn btn-default" onClick={self.handleButtonClick} type="button">Read my location</button>
         <button className="btn btn-default" onClick={self.handleSecondaryBtnClick} type="button">Long read</button>
         <span className="label label-info coord-unit">LAT:{rounder.toSix(state.latitude)}</span>
