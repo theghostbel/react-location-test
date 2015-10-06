@@ -18,7 +18,6 @@ module.exports = React.createClass({
     }
   },
   handleDataLoaded: function() {
-    console.log('loaded')
     this.setState({
       loading: false
     })

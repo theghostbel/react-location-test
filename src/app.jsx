@@ -31,7 +31,6 @@ var App = React.createClass({
     })
   },
   render: function() {
-
     return <div className="react-content">
         <Header updateTime={this.state.pos.timestamp}></Header>
         <RangeFinder myPosition={this.state.pos}></RangeFinder>

@@ -78,7 +78,7 @@ module.exports = React.createClass({
       .filter(function(val) {
         return val.lat & val.lng
       })
-      .map(function(val, key) {
+      .map(function(val) {
         return <li>{val.lat}
             &nbsp;-&nbsp;
             {val.lng}</li>
