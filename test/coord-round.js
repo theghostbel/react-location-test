@@ -19,6 +19,6 @@ test('rounding getFloat method', function(t) {
 test('rounding thrower method', function(t) {
   t.ok(rounder.thrower, 'member should be present')
   t.equal(typeof rounder.thrower, 'function', 'member should be a function')
-  t.throws(rounder.thrower, Error, 'should throw')
+  t.throws(rounder.thrower, Error, 'should throw an Error')
   t.end()
 })
