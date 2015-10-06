@@ -15,3 +15,10 @@ button.inactive {
 .unavailable span {
   opacity: 0.1;
 }
+div.geo-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-family: sans-serif;
+}

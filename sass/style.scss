@@ -26,6 +26,9 @@ div.react-content {
   @include flex-inside;
   justify-content: space-between;
 }
+.header a {
+  flex: 2;
+}
 .map {
   flex: 3;
 }

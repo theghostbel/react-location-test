@@ -1,5 +1,6 @@
 var React = require('react')
 var geo = require('../js/geolocation')
+var GoeDiv = require('./geodata')
 
 var ReactRouter = require('react-router')
 var Link = ReactRouter.Link
@@ -9,7 +10,7 @@ module.exports = React.createClass({
     return {
       started: false,
       watcher: null,
-      data: ''
+      data: {}
     }
   },
   buttonHandlerBuilder: function(start) {
@@ -20,9 +21,7 @@ module.exports = React.createClass({
         watcher = geo
           .watchPosition(function(pos) {
             self.setState({
-              data: [
-                pos.coords.latitude, pos.coords.longitude, pos.coords.altitude, pos.coords.speed
-              ].join(' | ')
+              data: pos
             })
           }, function(err) {
             alert([
@@ -52,7 +51,7 @@ module.exports = React.createClass({
         <div className={'watcher updated ' + (state.started
           ? ''
           : 'unavailable')}>
-          <span>{state.data || ''}</span>
+          <GoeDiv pos={this.state.data}></GoeDiv>
         </div>
         <div className="buttons">
           <button disabled={state.started} onClick={self.buttonHandlerBuilder(true)}>Start Watch</button>
