@@ -19,7 +19,8 @@ var App = React.createClass({
   handleCoordsUpdate: function(err, pos) {
 
     if (err) {
-      return console.error('ERROR(' + err.code + '): ' + err.message)
+      return
+      // return console.error('ERROR(' + err.code + '): ' + err.message)
     }
 
     this.refs

@@ -17,7 +17,7 @@ var geo = {
   getCoords: function(success, error) {
     navigator.geolocation.getCurrentPosition(success, error, options)
   },
-  getDistance: function(fromCoords, toCoords, success, error) {
+  getDistance: function(fromCoords, toCoords, success) {
     var distanceInMteres = geolib.getDistance(fromCoords, toCoords)
 
     return success(distanceInMteres)
