@@ -4,6 +4,7 @@ var Editor = require('./editor')
 var Toolbar = require('./toolbar')
 var RangeFinder = require('./range-finder')
 var Zone = require('./zone')
+var Watcher = require('./watch-me')
 
 var ReactRouter = require('react-router')
 var Router = ReactRouter.Router
@@ -47,4 +48,5 @@ var App = React.createClass({
 React.render((<Router>
     <Route component={App} path="/"></Route>
     <Route component={Editor} path="crm"/>
+    <Route component={Watcher} path="watch"/>
   </Router>), document.querySelector('.container'))

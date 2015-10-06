@@ -40,6 +40,12 @@ var geo = {
     // }]
 
     return success(isPointInside)
+  },
+  watchPosition: function(success, error) {
+    return navigator.geolocation.watchPosition(success, error, options)
+  },
+  clearWatcher: function(id) {
+    return navigator.geolocation.clearWatch(id)
   }
 }
 

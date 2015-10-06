@@ -18,6 +18,7 @@ module.exports = React.createClass({
         <span className="label label-success">Last Read</span>
         <span className="label label-primary timestamp">{lastUpdateTime}</span>
         <Link to={'/crm'}>Edit</Link>
+        <Link to={'/watch'}>Watch</Link>
       </header>
   }
 })

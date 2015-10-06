@@ -1,0 +1,17 @@
+div.watcher {
+  background: beige;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  height: 50vh;
+}
+div.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+button.inactive {
+  background: red;
+}
+.unavailable span {
+  opacity: 0.1;
+}
