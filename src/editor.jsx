@@ -32,73 +32,69 @@ module.exports = React.createClass({
   },
   handleSaveClick: function() {
 
-    this.setState({
-      laoding: true
-    })
+    var pointsCopy = _.omit(this.state.points, ['.key']),
+      update = _.omit(this.state.points, ['.key'])
 
-    var update = _.chain(this.state.points)
-      .omit(['.key'])
-      .map(function(val, key) {
+    _
+      .each(pointsCopy, function(val, key) {
         var data = {
-            lat: parseFloat(val.lat),
-            lng: parseFloat(val.lng)
-          },
-          result = {}
-
-        result[key] = data
-
-        return result
-
-      })
-      .value()
-
-    // this.fb
-    //   .update(update)
-  },
-  handleInputChange: function(key, type) {
-    var self = this
-    return function(event) {
-      var stateObj = self.state.points
-
-      stateObj[key][type] = rounder.toSix(event.target.value)
-
-      self.setState(stateObj)
-    }
-  },
-  renderAllInputs: function() {
-
-    var range = this.state.points,
-      self = this,
-      content = _.chain(range)
-        .omit(['.key'])
-        .map(function(val, key) {
-          return self.renderLatLngInput(key)
+          lat: parseFloat(val.lat),
+          lng: parseFloat(val.lng)
+        }
+        update[key] = data
         })
-        .value()
 
-    return content
-  },
-  renderLatLngInput: function(key) {
-    var state = this.state,
-      self = this
-    return <div className="coord-input-row">
-        <input className="coords" onChange={self.handleInputChange(key, 'lat')} placeholder="End latitude" ref="latitude" type="text" value={state.points[key].lat}/>
-        <input className="coords" onChange={self.handleInputChange(key, 'lng')} placeholder="End longitude" ref="longitude" type="text" value={state.points[key].lng}/>
-      </div>
-  },
-  render: function() {
-    var self = this,
-      state = self.state
-    return <div>
-        <header>
-          <Link to={'/'}>Back</Link>
-        </header>
-        <h3>Edit coords</h3>
-        {this.renderAllInputs()}
-        <button onClick={this.handleSaveClick}>Save</button>
-        <span className={state.loading
-          ? ''
-          : 'invis'}>Loading</span>
-      </div>
-  }
-})
+      this.setState({
+        laoding: true
+      })
+
+      this.fb
+        .update(update)
+    },
+    handleInputChange: function(key, type) {
+      var self = this
+      return function(event) {
+        var stateObj = self.state.points
+
+        stateObj[key][type] = rounder.toSix(event.target.value)
+
+        self.setState(stateObj)
+      }
+    },
+    renderAllInputs: function() {
+
+      var range = this.state.points,
+        self = this,
+        content = _.chain(range)
+          .omit(['.key'])
+          .map(function(val, key) {
+            return self.renderLatLngInput(key)
+          })
+          .value()
+
+      return content
+    },
+    renderLatLngInput: function(key) {
+      var state = this.state,
+        self = this
+      return <div className="coord-input-row">
+          <input className="coords" onChange={self.handleInputChange(key, 'lat')} placeholder="End latitude" ref="latitude" type="text" value={state.points[key].lat}/>
+          <input className="coords" onChange={self.handleInputChange(key, 'lng')} placeholder="End longitude" ref="longitude" type="text" value={state.points[key].lng}/>
+        </div>
+    },
+    render: function() {
+      var self = this,
+        state = self.state
+      return <div>
+          <header>
+            <Link to={'/'}>Back</Link>
+          </header>
+          <h3>Edit coords</h3>
+          {this.renderAllInputs()}
+          <button onClick={this.handleSaveClick}>Save</button>
+          <span className={state.loading
+            ? ''
+            : 'invis'}>Loading</span>
+        </div>
+    }
+  })
